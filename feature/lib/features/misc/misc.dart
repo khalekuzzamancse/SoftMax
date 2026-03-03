@@ -3,7 +3,7 @@ import 'package:shimmer/shimmer.dart';
 
 class FullScreenShimmerEffect extends StatelessWidget {
   const FullScreenShimmerEffect({Key? key}) : super(key: key);
-
+  //
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
