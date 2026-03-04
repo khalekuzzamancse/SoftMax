@@ -5,11 +5,11 @@ import 'package:feature/core/core_language.dart';
 import 'package:feature/core/core_ui.dart';
 import 'package:feature/features/_core/auth_preserver_controller.dart';
 import 'package:feature/features/_core/global_mediator.dart';
-import 'package:feature/features/home/presentation/ui/home_screen.dart';
 import 'package:feature/features/home/presentation/ui/post_details_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'features/_navigation/pages_example.dart';
 import 'features/auth/presentation/ui/login_screen.dart';
+import 'features/home/presentation/ui/home_screen.dart';
 class FeatureEntryPoint extends StatefulWidget {
   const FeatureEntryPoint({super.key});
 
@@ -31,17 +31,17 @@ class _FeatureEntryPointState extends State<FeatureEntryPoint> {
     final appLinks = AppLinks();
     final Uri? link = await appLinks.getInitialLink();
     if (link != null) {
-      Logger.on("EntryPoint", 'deepLink: $link');
+      Logger.off("EntryPoint", 'deepLink: $link');
       final String? path = link.path;  // e.g., /post/1
       if (path != null && path.isNotEmpty) {
         final segments = path.split('/');  // Split the path into segments
         final String id = segments.last;
-        Logger.on("EntryPoint", 'Extracted ID: $id');
+        Logger.off("EntryPoint", 'Extracted ID: $id');
         safeSetState((){
           postId=id;
         });
       } else {
-        Logger.on("EntryPoint", 'No ID found in deep link path');
+        Logger.off("EntryPoint", 'No ID found in deep link path');
       }
     }
   }
@@ -49,6 +49,7 @@ class _FeatureEntryPointState extends State<FeatureEntryPoint> {
 
   @override
   Widget build(BuildContext context) {
+    return Navigation2Sample();
     final id=postId;
     if(id==null){
       return BackHandlerDecorator(child: EntryPoint());
@@ -105,7 +106,6 @@ class _EntryPointState extends State<EntryPoint> {
 
   @override
   Widget build(BuildContext context) {
-
     if (isLoggedIn == null)
     if (isLoggedIn == null) {
       return SplashScreen();

@@ -10,8 +10,8 @@ part of 'login_screen.dart';
 /// This also helps eliminate redundancy.
 final class LoginViewController {
   void init(_LoginScreenState self) {
-    self._usernameController.text = "";
-    self._passwordController.text = "";
+    self._usernameController.text = "emilys";
+    self._passwordController.text = "emilyspass";
   }
   Future<bool> login(_LoginScreenState self) async {
     final username = self._usernameController.text.trim();
